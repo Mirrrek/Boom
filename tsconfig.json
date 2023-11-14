@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "ES6",
+        "moduleResolution": "node",
+        "rootDir": "./src",
+        "paths": {
+            "@shared/*": [
+                "./src/shared/*"
+            ],
+            "@assets/*": [
+                "./src/assets/*"
+            ],
+            "@client/*": [
+                "./src/client/*"
+            ],
+            "@server/*": [
+                "./src/server/*"
+            ]
+        },
+        "strict": true,
+        "sourceMap": true
+    }
+}
