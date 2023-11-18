@@ -4,15 +4,15 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "npm run build:client:dev && npm run build:server:dev && npm run start",
-        "build": "npm run build:client:prod && npm run build:server:prod",
+        "dev": "npm-run-all --parallel build:client:dev build:server:dev",
+        "build": "npm-run-all build:client:prod build:server:prod",
         "start": "npm-run-all --parallel start:client start:server",
         "build:client:dev": "webpack --mode=development --config client.webpack.config.js",
         "build:server:dev": "webpack --mode=development --config server.webpack.config.js",
         "build:client:prod": "webpack --mode=production --config client.webpack.config.js",
         "build:server:prod": "webpack --mode=production --config server.webpack.config.js",
-        "start:client": "cd ./dist/client && python -m http.server 80",
-        "start:server": "node dist/server/index.js"
+        "start:client": "cd ./dist/client && python -m http.server 8000 >NUL 2>&1",
+        "start:server": "cd ./dist/server && node index.js"
     },
     "author": "Marc Sportiello",
     "license": "ISC",
