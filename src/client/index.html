@@ -4,10 +4,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://accounts.google.com/gsi/client" async></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Quantico', sans-serif;
+            font-weight: 400;
+        }
+
+        body>* {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #popups {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            width: fit-content;
+            height: fit-content;
+            padding: 1rem;
+            z-index: 4;
+        }
+
+        #popups p {
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            max-width: 25rem;
+            border-radius: 0.15rem;
+            color: #f0f0f0;
+            background-color: #202020;
+            box-shadow: 0 0 2rem #2020207f;
+            transition: opacity 0.25s ease-in-out;
+        }
+
+        #login-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #202020a0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 2;
+        }
+
+        #login-screen #login-username {
+            padding: 1rem;
+            margin-bottom: 2rem;
+            font-family: inherit;
+            font-size: 1rem;
+            color: #f0f0f0;
+            background-color: #202020;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid #f0f0f0;
+            box-shadow: 0 0 2rem #2020207f;
+            transition: opacity 0.5s ease-in-out, border-color 0.25s ease-in-out;
+        }
+
+        #login-screen #login-username.invalid {
+            border-color: #ff4040;
+        }
+
+        #login-screen #login-google-sign-in-button {
+            user-select: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #canvas {
+            background-image: url('https://images.unsplash.com/photo-1548919973-5cef591cdbc9');
+            background-size: cover;
+            z-index: 1;
+        }
+    </style>
 </head>
 
 <body>
-    <p>Hello, world!</p>
+    <div id="popups" style="top: 0;"></div>
+    <div id="login-screen">
+        <input type="text" id="login-username" placeholder="Username" style="opacity: 0; pointer-events: none;" />
+        <div id="login-google-sign-in-button" style="opacity: 0; pointer-events: none;"></div>
+    </div>
+    <canvas id="canvas"></canvas>
 </body>
 
 </html>
